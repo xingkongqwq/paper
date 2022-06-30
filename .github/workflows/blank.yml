@@ -18,7 +18,7 @@ jobs:
            git clone https://github.com/PaperMC/Paper.git
            cd Paper
            ./gradlew applyPatches
-           ./gradlew createMojmapBundlerJar
+           ./gradlew createReobfPaperclipJar
       - uses: actions/upload-artifact@v3
         with:
            name: Paper
