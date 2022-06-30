@@ -1,0 +1,23 @@
+name: Build Paper
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-java@v3
+        with:
+           distribution: 'adopt'
+           java-version: '17'
+      - name: Run a multi-line script
+        run: |
+           git clone https://github.com/PaperMC/Paper.git
+           cd Paper
+           ./gradlew applyPatches
+           ./gradlew createMojmapBundlerJar
+      - uses: actions/upload-artifact@v3
+        with:
+           name: my-artifact
+           path: build/libs
